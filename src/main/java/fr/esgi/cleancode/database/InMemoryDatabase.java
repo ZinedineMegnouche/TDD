@@ -26,6 +26,7 @@ public final class InMemoryDatabase {
         return drivingLicenceToSave;
     }
 
+
     public Optional<DrivingLicence> findById(UUID id) {
         return Optional.ofNullable(IN_MEMORY_DATABASE.get(id));
     }
