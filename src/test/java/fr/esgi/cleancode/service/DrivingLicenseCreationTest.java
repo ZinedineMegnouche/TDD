@@ -35,15 +35,20 @@ public class DrivingLicenseCreationTest {
         when(database.save(id,drivingLicense)).thenReturn(drivingLicense);
 
         var actual = database.save(id,drivingLicense);
-
         assertThat(actual).isEqualTo(drivingLicense);
-
 
     }
 
     @Test
     void should_not_create_licence(){
+        final var id = UUID.randomUUID();
+        final  var drivingLicense = creationService.createDrivingLicense(id,"");
 
+        when(socialSecurityNumberService.isSocialSecurityNumberValid("123")).thenReturn(false);
+        when(database.save(id,drivingLicense)).thenReturn(drivingLicense);
+
+        var actual = database.save(id,drivingLicense);
+        assertThat(actual).isEqualTo(drivingLicense);
     }
 
 }

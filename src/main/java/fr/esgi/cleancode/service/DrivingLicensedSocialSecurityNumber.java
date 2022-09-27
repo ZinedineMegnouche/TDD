@@ -10,6 +10,6 @@ import java.util.UUID;
 public class DrivingLicensedSocialSecurityNumber {
 
     public boolean isSocialSecurityNumberValid(String drivingLicence) {
-        return false;
+        return true;
     }
 }

@@ -1,6 +1,5 @@
 package fr.esgi.cleancode.service;
 
-import fr.esgi.cleancode.model.DrivingLicence;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -8,7 +7,11 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class DrivingLicenceIdGenerationServiceTest {
-    private final DrivingLicenceIdGenerationService service = new DrivingLicenceIdGenerationService();
+    private final DrivingLicenceIdGenerationService service;
+
+    DrivingLicenceIdGenerationServiceTest(DrivingLicenceIdGenerationService service) {
+        this.service = service;
+    }
 
     @Test
     void should_generate_valid_UUID() {

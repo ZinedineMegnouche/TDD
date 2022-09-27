@@ -8,7 +8,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class DrivingLicenceIdGenerationService {
 
-    //private final InMemoryDatabase database;
+    private final InMemoryDatabase database;
+
+    private final DrivingLicensedSocialSecurityNumber socialSecurityNumber;
 
     public UUID generateNewDrivingLicenceId() {
         return UUID.randomUUID();
@@ -18,8 +20,9 @@ public class DrivingLicenceIdGenerationService {
     }
 
     public DrivingLicence createDrivingLicenseId(UUID drivingLicenceId, DrivingLicence drivingLicenceToSave) {
-        //return database.save(drivingLicenceId,drivingLicenceToSave);
-        return drivingLicenceToSave;
+       return DrivingLicence.builder().build();
     }
+
+
 
 }
