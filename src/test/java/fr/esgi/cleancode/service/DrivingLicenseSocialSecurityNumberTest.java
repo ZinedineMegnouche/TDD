@@ -2,7 +2,6 @@
 package fr.esgi.cleancode.service;
 import fr.esgi.cleancode.database.InMemoryDatabase;
 import fr.esgi.cleancode.model.DrivingLicence;
-import io.vavr.control.Either;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,41 +11,31 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class DrivingLicenseCheckSocialSecurityNumberTest {
+public class DrivingLicenseSocialSecurityNumberTest {
     @InjectMocks
-    private DrivingLicenceIdGenerationService service;
-
-    @Mock
-    private InMemoryDatabase database;
-
+    private DrivingLicensedSocialSecurityNumber service;
     @Test
     void should_validate(){
-        final UUID drivingLicenceId = UUID.randomUUID();
-        final DrivingLicence drivingLicence = DrivingLicence.builder().id(drivingLicenceId).build();
-
-        final String socialSecurityNumber = drivingLicence.getDriverSocialSecurityNumber();
-
-        assertThat(service.isSocialSecurityNumberValid(socialSecurityNumber))
-                .isEqualTo(false);
+        final String str = "123456789098765";
+        final boolean actual = service.isSocialSecurityNumberValid(str);
+        assertThat(actual).isTrue();
     }
 
-   /* @ParameterizedTest
+    @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {"test","123456789098765","123","12S"})
+    @ValueSource(strings = {"test","123","12S"})
     void should_not_validate(String invalidSSNumber){
-      //  var actual = validateMockitoUsage(DrivingLicence.builder().driverSocialSecurityNumber(invalidSSNumber).build());
-        var actual = validate(DrivingLicence.builder().driverSocialSecurityNumber(invalidSSNumber).build());
-        assertThat(actual).contain
-    }*/
+        var actual = service.isSocialSecurityNumberValid(invalidSSNumber);
+        assertThat(actual).isFalse();
+    }
 
-    @Test
+  /*  @Test
     void should_create_drivingLicense(){
         final UUID drivingLicenceId = service.generateNewDrivingLicenceId();
         final DrivingLicence drivingLicence = DrivingLicence.builder().id(drivingLicenceId).driverSocialSecurityNumber("123456789098765").build();
@@ -55,5 +44,5 @@ public class DrivingLicenseCheckSocialSecurityNumberTest {
 
         final DrivingLicence DL = service.createDrivingLicenseId(drivingLicenceId,drivingLicence);
         assertThat(DL).isEqualTo(drivingLicence);
-    }
+    }*/
 }
