@@ -1,5 +1,5 @@
 
-/*package fr.esgi.cleancode.service;
+package fr.esgi.cleancode.service;
 
 import fr.esgi.cleancode.database.InMemoryDatabase;
 import fr.esgi.cleancode.model.DrivingLicence;
@@ -19,22 +19,25 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class DrivingLicenseRemovePointTest {
 
-    @InjectMocks
+
+    @Mock
+    private InMemoryDatabase database;
+    @Mock
     private DrivingLicenseRemovePoint service;
 
-
     @Test
-    void should_remove_point(){
+    void should_remove_point() throws Exception {
         final var id = UUID.randomUUID();
+        database.findById(id);
         int pointRemove = 5;
-        final var drivingLicence = DrivingLicence.builder().id(id).build();
+        DrivingLicence drivingLicence = DrivingLicence.builder().id(id).build();
+        when(service.removePoint(id,pointRemove)).thenReturn(drivingLicence);
 
-        when(service.removePoint(drivingLicence,pointRemove)).thenReturn(drivingLicence);
-
+        verify(database).findById(id);
     }
 
     @Test
     void should_not_remove_point(){
 
     }
-}*/
+}

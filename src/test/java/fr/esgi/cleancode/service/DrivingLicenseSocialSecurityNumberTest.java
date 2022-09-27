@@ -35,15 +35,4 @@ public class DrivingLicenseSocialSecurityNumberTest {
         assertThat(actual).isFalse();
     }
 
-
-  /*  @Test
-    void should_create_drivingLicense(){
-        final UUID drivingLicenceId = service.generateNewDrivingLicenceId();
-        final DrivingLicence drivingLicence = DrivingLicence.builder().id(drivingLicenceId).driverSocialSecurityNumber("123456789098765").build();
-
-        when(database.save(drivingLicenceId,drivingLicence)).thenReturn(drivingLicence);
-
-        final DrivingLicence DL = service.createDrivingLicenseId(drivingLicenceId,drivingLicence);
-        assertThat(DL).isEqualTo(drivingLicence);
-    }*/
 }
