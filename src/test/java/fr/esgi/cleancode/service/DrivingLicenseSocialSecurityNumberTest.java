@@ -22,8 +22,8 @@ public class DrivingLicenseSocialSecurityNumberTest {
     private DrivingLicensedSocialSecurityNumber service;
     @Test
     void should_validate(){
-        final String str = "123456789098765";
-        final boolean actual = service.isSocialSecurityNumberValid(str);
+        final String securitySocialNumber = "123456789098765";
+        final boolean actual = service.isSocialSecurityNumberValid(securitySocialNumber);
         assertThat(actual).isTrue();
     }
 
@@ -34,6 +34,7 @@ public class DrivingLicenseSocialSecurityNumberTest {
         var actual = service.isSocialSecurityNumberValid(invalidSSNumber);
         assertThat(actual).isFalse();
     }
+
 
   /*  @Test
     void should_create_drivingLicense(){
